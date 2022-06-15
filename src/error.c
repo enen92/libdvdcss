@@ -53,7 +53,7 @@ void print_error( dvdcss_t dvdcss, const char *psz_string, ... )
 /*****************************************************************************
  * Debug messages
  *****************************************************************************/
-void print_debug( const dvdcss_t dvdcss, const char *psz_string, ... )
+void print_error( const dvdcss_t dvdcss, const char *psz_string, ... )
 {
     if( dvdcss->b_debug )
     {
