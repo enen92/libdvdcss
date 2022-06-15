@@ -499,9 +499,9 @@ static void init_cache( dvdcss_t dvdcss )
  * calls. \e libdvdcss checks whether ioctls can be performed on the disc,
  * and when possible, the disc key is retrieved.
  */
-LIBDVDCSS_EXPORT dvdcss_t dvdcss_open ( const char *psz_target )
+LIBDVDCSS_EXPORT dvdcss_t dvdcss_open ( const char *psz_target, void *p_stream, dvdcss_stream_cb *p_stream_cb)
 {
-    return dvdcss_open_common( psz_target, NULL, NULL );
+    return dvdcss_open_common( psz_target, p_stream, p_stream_cb );
 }
 
 /**
@@ -531,12 +531,12 @@ static dvdcss_t dvdcss_open_common ( const char *psz_target, void *p_stream,
         return NULL;
     }
 
-    if( psz_target == NULL &&
+    /*if( psz_target == NULL &&
       ( p_stream == NULL || p_stream_cb == NULL ) )
     {
         dvdcss->psz_device = NULL;
         goto error;
-    }
+    }*/
 
     /* Initialize structure with default values. */
     dvdcss->i_fd = -1;
@@ -550,6 +550,10 @@ static dvdcss_t dvdcss_open_common ( const char *psz_target, void *p_stream,
     dvdcss->p_stream = p_stream;
     dvdcss->p_stream_cb = p_stream_cb;
 
+    if (p_stream == NULL)
+        fprintf( stdout, "pstream null");
+    else
+        fprintf( stdout, "pstream not null");
     /* Set library verbosity from DVDCSS_VERBOSE environment variable. */
     set_verbosity( dvdcss );
 
