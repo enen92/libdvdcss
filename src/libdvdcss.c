@@ -499,9 +499,9 @@ static void init_cache( dvdcss_t dvdcss )
  * calls. \e libdvdcss checks whether ioctls can be performed on the disc,
  * and when possible, the disc key is retrieved.
  */
-LIBDVDCSS_EXPORT dvdcss_t dvdcss_open ( const char *psz_target )
+LIBDVDCSS_EXPORT dvdcss_t dvdcss_open ( const char *psz_target, dvdcss_stream_cb *p_stream_cb)
 {
-    return dvdcss_open_common( psz_target, NULL, NULL );
+    return dvdcss_open_common( psz_target, NULL, p_stream_cb );
 }
 
 /**

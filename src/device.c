@@ -361,9 +361,9 @@ int dvdcss_open_device ( dvdcss_t dvdcss )
 #endif
 
     /* if callback functions are initialized */
-    if( dvdcss->p_stream )
+    if( dvdcss->p_stream_cb )
     {
-        print_debug( dvdcss, "using stream API for access" );
+        print_error( dvdcss, "using stream API for access" );
         dvdcss->pf_seek  = stream_seek;
         dvdcss->pf_read  = stream_read;
         dvdcss->pf_readv = stream_readv;
